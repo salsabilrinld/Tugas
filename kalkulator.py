@@ -1,7 +1,25 @@
 # streamlit_calculator.py
 
 import streamlit as st
-import math_operations
+
+
+def add(x, y):
+    return x + y
+
+
+def subtract(x, y):
+    return x - y
+
+
+def multiply(x, y):
+    return x * y
+
+
+def divide(x, y):
+    if y == 0:
+        raise ZeroDivisionError("Division by zero is not allowed.")
+    return x / y
+
 
 st.title("Simple Calculator")
 
@@ -15,14 +33,14 @@ result = None
 
 if st.button("Calculate"):
     if operation == "Add":
-        result = math_operations.add(x, y)
+        result = add(x, y)
     elif operation == "Subtract":
-        result = math_operations.subtract(x, y)
+        result = subtract(x, y)
     elif operation == "Multiply":
-        result = math_operations.multiply(x, y)
+        result = multiply(x, y)
     elif operation == "Divide":
         try:
-            result = math_operations.divide(x, y)
+            result = divide(x, y)
         except ZeroDivisionError:
             st.error("Division by zero is not allowed.")
 
